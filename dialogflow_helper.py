@@ -2,6 +2,9 @@
 import os
 import dialogflow_v2
 
+def teardown():
+    dh = dialogflow_helper(os.environ.get("GCP_PROJECT"))
+    dh.delete_agent()
 
 class dialogflow_helper:
     def __init__(self, project):
@@ -37,4 +40,3 @@ if __name__ == "__main__":
     dialogflow_helper = dialogflow_helper(os.environ.get("GCP_PROJECT"))
     dialogflow_helper.set_agent()
     dialogflow_helper.get_agent()
-
